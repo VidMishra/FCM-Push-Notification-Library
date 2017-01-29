@@ -1,0 +1,37 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.vidyanand.fcmpushlibrary">
+
+    <application android:allowBackup="true" android:label="@string/app_name"
+        android:supportsRtl="true">
+
+
+        <service android:name=".Services.FcmMsgListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".Services.FcmInstanceIDListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+
+        <receiver
+            android:name=".Receivers.FcmEventReceiver"
+            android:enabled="true"
+            android:exported="false">
+
+            <intent-filter>
+                <action android:name="com.vidyanand.registrationComplete"></action>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="com.vidyanand.messageReceived"></action>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
